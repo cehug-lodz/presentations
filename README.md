@@ -1,6 +1,7 @@
 # presentations
 
 ## Sezon 2017/2018
+* 2017-10-18 [Arek Sarwa: Nowczesny C++](./2017-10-18/ModernCpp.pdf)
 * 2017-09-27 [Radosław Pietrzyk: jak działa DeviceTree?](./2017-09-27/DeviceTreeInLinux.pdf)
 
 ## Sezon 2016/2017
