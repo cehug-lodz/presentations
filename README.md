@@ -1,6 +1,7 @@
 # presentations
 
 ## Sezon 2017/2018
+* 2017-11-08 [Adam Podogrocki: Zephyr RTOS for IoT](./2017-11-08/Zephyr_RTOS.pdf)
 * 2017-10-18 [Arek Sarwa: Nowczesny C++](./2017-10-18/ModernCpp.pdf)
 * 2017-09-27 [Radosław Pietrzyk: jak działa DeviceTree?](./2017-09-27/DeviceTreeInLinux.pdf)
 
