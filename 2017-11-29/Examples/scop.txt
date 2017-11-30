@@ -1,0 +1,136 @@
+    Function: main
+    Region: %for.body.i105---%kernel_2mm.exit
+    Max Loop Depth:  3
+    Invariant Accesses: {
+    }
+    Context:
+    {  :  }
+    Assumed Context:
+    {  :  }
+    Invalid Context:
+    {  : 1 = 0 }
+    Arrays {
+        double MemRef0[*][1024]; // Element size 8
+        double MemRef1__phi; // Element size 8
+        double MemRef2[*][1024]; // Element size 8
+        double MemRef3[*][1024]; // Element size 8
+        double MemRef4[*][1024]; // Element size 8
+        double MemRef5__phi; // Element size 8
+        double MemRef6[*][1024]; // Element size 8
+        double Packed_B[256][384][4]; // Element size 8
+        double Packed_A[16][384][4]; // Element size 8
+    }
+    Arrays (Bounds as pw_affs) {
+        double MemRef0[*][ { [] -> [(1024)] } ]; // Element size 8
+        double MemRef1__phi; // Element size 8
+        double MemRef2[*][ { [] -> [(1024)] } ]; // Element size 8
+        double MemRef3[*][ { [] -> [(1024)] } ]; // Element size 8
+        double MemRef4[*][ { [] -> [(1024)] } ]; // Element size 8
+        double MemRef5__phi; // Element size 8
+        double MemRef6[*][ { [] -> [(1024)] } ]; // Element size 8
+        double Packed_B[ { [] -> [(256)] } ][ { [] -> [(384)] } ][ { [] -> [(4)] } ]; // Element size 8
+        double Packed_A[ { [] -> [(16)] } ][ { [] -> [(384)] } ][ { [] -> [(4)] } ]; // Element size 8
+    }
+    Alias Groups (3):
+        [[ <{ MemRef6[(0), (0)] }, { MemRef6[(1023), (1024)] }> <{ MemRef4[(0), (0)] }, { MemRef4[(1023), (1024)] }> <{ MemRef0[(0), (0)] }, { MemRef0[(1023), (1024)] }> ]]
+        [[ <{ MemRef2[(0), (0)] }, { MemRef2[(1023), (1024)] }> <{ MemRef4[(0), (0)] }, { MemRef4[(1023), (1024)] }> <{ MemRef0[(0), (0)] }, { MemRef0[(1023), (1024)] }> ]]
+        [[ <{ MemRef3[(0), (0)] }, { MemRef3[(1023), (1024)] }> <{ MemRef4[(0), (0)] }, { MemRef4[(1023), (1024)] }> <{ MemRef0[(0), (0)] }, { MemRef0[(1023), (1024)] }> ]]
+    Statements {
+    	Stmt1
+            Domain :=
+                { Stmt1[i0, i1] : 0 <= i0 <= 1023 and 0 <= i1 <= 1023 };
+            Schedule :=
+                ;
+            MustWriteAccess :=	[Reduction Type: NONE] [Scalar: 1]
+                { Stmt1[i0, i1] -> MemRef1__phi[] };
+           new: { Stmt1[i0, i1] -> MemRef0[i0, i1] };
+    	Stmt2
+            Domain :=
+                { Stmt2[i0, i1, i2] : 0 <= i0 <= 1023 and 0 <= i1 <= 1023 and 0 <= i2 <= 1023 };
+            Schedule :=
+                ;
+            MustWriteAccess :=	[Reduction Type: NONE] [Scalar: 1]
+                { Stmt2[i0, i1, i2] -> MemRef1__phi[] };
+           new: { Stmt2[i0, i1, i2] -> MemRef0[i0, i1] };
+            ReadAccess :=	[Reduction Type: NONE] [Scalar: 1]
+                { Stmt2[i0, i1, i2] -> MemRef1__phi[] };
+           new: { Stmt2[i0, i1, i2] -> MemRef0[i0, i1] };
+            ReadAccess :=	[Reduction Type: NONE] [Scalar: 0]
+                { Stmt2[i0, i1, i2] -> MemRef2[i0, i2] };
+           new: { Stmt2[i0, i1, i2] -> Packed_A[o0, o1, o2] : 384*floor((-i2 + o1)/384) = -i2 + o1 and 64*floor((-i0 + 4o0 + o2)/64) = -i0 + 4o0 + o2 and 0 <= o1 <= 383 and o2 >= 0 and -4o0 <= o2 <= 63 - 4o0 and o2 <= 3 };
+            ReadAccess :=	[Reduction Type: NONE] [Scalar: 0]
+                { Stmt2[i0, i1, i2] -> MemRef3[i2, i1] };
+           new: { Stmt2[i0, i1, i2] -> Packed_B[o0, o1, i1 - 4o0] : 384*floor((-i2 + o1)/384) = -i2 + o1 and -3 + i1 <= 4o0 <= i1 and 0 <= o1 <= 383 };
+    	Stmt7
+            Domain :=
+                { Stmt7[i0, i1] : 0 <= i0 <= 1023 and 0 <= i1 <= 1023 };
+            Schedule :=
+                ;
+            ReadAccess :=	[Reduction Type: NONE] [Scalar: 0]
+                { Stmt7[i0, i1] -> MemRef4[i0, i1] };
+            MustWriteAccess :=	[Reduction Type: NONE] [Scalar: 1]
+                { Stmt7[i0, i1] -> MemRef5__phi[] };
+           new: { Stmt7[i0, i1] -> MemRef4[i0, i1] };
+    	Stmt8
+            Domain :=
+                { Stmt8[i0, i1, i2] : 0 <= i0 <= 1023 and 0 <= i1 <= 1023 and 0 <= i2 <= 1023 };
+            Schedule :=
+                ;
+            MustWriteAccess :=	[Reduction Type: NONE] [Scalar: 1]
+                { Stmt8[i0, i1, i2] -> MemRef5__phi[] };
+           new: { Stmt8[i0, i1, i2] -> MemRef4[i0, i1] };
+            ReadAccess :=	[Reduction Type: NONE] [Scalar: 1]
+                { Stmt8[i0, i1, i2] -> MemRef5__phi[] };
+           new: { Stmt8[i0, i1, i2] -> MemRef4[i0, i1] };
+            ReadAccess :=	[Reduction Type: NONE] [Scalar: 0]
+                { Stmt8[i0, i1, i2] -> MemRef0[i0, i2] };
+           new: { Stmt8[i0, i1, i2] -> Packed_A[o0, o1, o2] : 384*floor((-i2 + o1)/384) = -i2 + o1 and 64*floor((-i0 + 4o0 + o2)/64) = -i0 + 4o0 + o2 and 0 <= o1 <= 383 and o2 >= 0 and -4o0 <= o2 <= 63 - 4o0 and o2 <= 3 };
+            ReadAccess :=	[Reduction Type: NONE] [Scalar: 0]
+                { Stmt8[i0, i1, i2] -> MemRef6[i2, i1] };
+           new: { Stmt8[i0, i1, i2] -> Packed_B[o0, o1, i1 - 4o0] : 384*floor((-i2 + o1)/384) = -i2 + o1 and -3 + i1 <= 4o0 <= i1 and 0 <= o1 <= 383 };
+    	CopyStmt_0
+            Domain :=
+                { CopyStmt_0[i0, i1, i2] : 0 <= i0 <= 1023 and 0 <= i1 <= 1023 and 0 <= i2 <= 1023 };
+            Schedule :=
+                ;
+            MustWriteAccess :=	[Reduction Type: NONE] [Scalar: 0]
+                null;
+           new: { CopyStmt_0[i0, i1, i2] -> Packed_B[o0, o1, i1 - 4o0] : 384*floor((-i2 + o1)/384) = -i2 + o1 and -3 + i1 <= 4o0 <= i1 and 0 <= o1 <= 383 };
+            ReadAccess :=	[Reduction Type: NONE] [Scalar: 0]
+                null;
+           new: { CopyStmt_0[i0, i1, i2] -> MemRef3[i2, i1] };
+    	CopyStmt_1
+            Domain :=
+                { CopyStmt_1[i0, i1, i2] : 0 <= i0 <= 1023 and 0 <= i1 <= 1023 and 0 <= i2 <= 1023 };
+            Schedule :=
+                ;
+            MustWriteAccess :=	[Reduction Type: NONE] [Scalar: 0]
+                null;
+           new: { CopyStmt_1[i0, i1, i2] -> Packed_A[o0, o1, o2] : 384*floor((-i2 + o1)/384) = -i2 + o1 and 64*floor((-i0 + 4o0 + o2)/64) = -i0 + 4o0 + o2 and 0 <= o1 <= 383 and o2 >= 0 and -4o0 <= o2 <= 63 - 4o0 and o2 <= 3 };
+            ReadAccess :=	[Reduction Type: NONE] [Scalar: 0]
+                null;
+           new: { CopyStmt_1[i0, i1, i2] -> MemRef2[i0, i2] };
+    	CopyStmt_2
+            Domain :=
+                { CopyStmt_2[i0, i1, i2] : 0 <= i0 <= 1023 and 0 <= i1 <= 1023 and 0 <= i2 <= 1023 };
+            Schedule :=
+                ;
+            MustWriteAccess :=	[Reduction Type: NONE] [Scalar: 0]
+                null;
+           new: { CopyStmt_2[i0, i1, i2] -> Packed_B[o0, o1, i1 - 4o0] : 384*floor((-i2 + o1)/384) = -i2 + o1 and -3 + i1 <= 4o0 <= i1 and 0 <= o1 <= 383 };
+            ReadAccess :=	[Reduction Type: NONE] [Scalar: 0]
+                null;
+           new: { CopyStmt_2[i0, i1, i2] -> MemRef6[i2, i1] };
+    	CopyStmt_3
+            Domain :=
+                { CopyStmt_3[i0, i1, i2] : 0 <= i0 <= 1023 and 0 <= i1 <= 1023 and 0 <= i2 <= 1023 };
+            Schedule :=
+                ;
+            MustWriteAccess :=	[Reduction Type: NONE] [Scalar: 0]
+                null;
+           new: { CopyStmt_3[i0, i1, i2] -> Packed_A[o0, o1, o2] : 384*floor((-i2 + o1)/384) = -i2 + o1 and 64*floor((-i0 + 4o0 + o2)/64) = -i0 + 4o0 + o2 and 0 <= o1 <= 383 and o2 >= 0 and -4o0 <= o2 <= 63 - 4o0 and o2 <= 3 };
+            ReadAccess :=	[Reduction Type: NONE] [Scalar: 0]
+                null;
+           new: { CopyStmt_3[i0, i1, i2] -> MemRef0[i0, i2] };
+    }
+
