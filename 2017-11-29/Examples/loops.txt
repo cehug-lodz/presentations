@@ -1,0 +1,5 @@
+Printing analysis 'Natural Loop Information' for function 'detect':
+Loop at depth 1 containing: %loop_begin<header><exiting>,%if.then<latch>
+Loop at depth 1 containing: %while.cond<header><exiting>,%while.body,%for.cond,%for.end<latch>,%for.body,%for.inc
+    Loop at depth 2 containing: %for.cond<header><exiting>,%for.body,%for.inc<latch>
+

@@ -1,0 +1,38 @@
+Function: analysis: 8 pointers, 0 call sites
+  NoAlias:	i8** %ptr, i8*** %ptr.addr
+  NoAlias:	[40 x i8]* %local, i8** %ptr
+  NoAlias:	[40 x i8]* %local, i8*** %ptr.addr
+  NoAlias:	i32* %res, i8** %ptr
+  NoAlias:	i32* %res, i8*** %ptr.addr
+  NoAlias:	[40 x i8]* %local, i32* %res
+  NoAlias:	i8* %arrayidx, i8** %ptr
+  NoAlias:	i8* %arrayidx, i8*** %ptr.addr
+  PartialAlias:	[40 x i8]* %local, i8* %arrayidx
+  NoAlias:	i32* %res, i8* %arrayidx
+  MayAlias:	i8** %0, i8** %ptr
+  NoAlias:	i8** %0, i8*** %ptr.addr
+  NoAlias:	[40 x i8]* %local, i8** %0
+  NoAlias:	i32* %res, i8** %0
+  NoAlias:	i8* %arrayidx, i8** %0
+  MayAlias:	i8* %1, i8** %ptr
+  NoAlias:	i8* %1, i8*** %ptr.addr
+  NoAlias:	[40 x i8]* %local, i8* %1
+  NoAlias:	i32* %res, i8* %1
+  NoAlias:	i8* %1, i8* %arrayidx
+  MayAlias:	i8* %1, i8** %0
+  NoAlias:	i8* %arrayidx1, i8** %ptr
+  NoAlias:	i8* %arrayidx1, i8*** %ptr.addr
+  PartialAlias:	[40 x i8]* %local, i8* %arrayidx1
+  NoAlias:	i32* %res, i8* %arrayidx1
+  MustAlias:	i8* %arrayidx, i8* %arrayidx1
+  NoAlias:	i8* %arrayidx1, i8** %0
+  NoAlias:	i8* %1, i8* %arrayidx1
+
+===== Alias Analysis Evaluator Report =====
+  28 Total Alias Queries Performed
+  22 no alias responses (78.5%)
+  3 may alias responses (10.7%)
+  2 partial alias responses (7.1%)
+  1 must alias responses (3.5%)
+  Alias Analysis Evaluator Pointer Alias Summary: 78%/10%/7%/3%
+  Alias Analysis Mod/Ref Evaluator Summary: no mod/ref!
