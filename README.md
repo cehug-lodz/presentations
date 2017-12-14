@@ -1,6 +1,7 @@
 # presentations
 
 ## Sezon 2017/2018
+* 2017-12-13 [Maciej Borzęcki: Go in embedded](./2017-12-13/README.md)
 * 2017-11-29 [Dominik Adamski: LLVM - discover secrets of the dragon](./2017-11-29/llvm_presentation.pdf)
 * 2017-11-08 [Adam Podogrocki: Zephyr RTOS for IoT](./2017-11-08/Zephyr_RTOS.pdf)
 * 2017-10-18 [Arek Sarwa: Nowczesny C++](./2017-10-18/ModernCpp.pdf)

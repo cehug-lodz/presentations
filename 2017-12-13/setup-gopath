@@ -1,0 +1,8 @@
+THISGOPATH=$(readlink -f $(dirname $0))/gopath
+if [ -n "${GOPATH}" ]; then
+    GOPATH=${THISGOPATH}:${GOPATH}
+else
+    GOPATH=$THISGOPATH
+fi
+
+export GOPATH

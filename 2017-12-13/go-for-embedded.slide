@@ -1,0 +1,639 @@
+Go in embedded
+13 Dec 2017
+Tags: foo, bar, baz
+
+Maciej Borzęcki
+Software Engineer, Canonical
+maciek.borzecki@gmail.com
+https://github.com/bboozzoo
+
+* Go
+
+- Appeared  on Nov 8, 2009
+- 1.0 released in March 2012
+- [[https://golang.org]]
+
+.image img/golang-logo.png _ 600
+
+* Who's behind it?
+
+.image img/ken-thompson.png _ 950
+
+: responsible for B, Unix
+
+* Who's behind it? (2)
+
+.image img/rob-pike.png _ 950
+
+: responsible for Plan9, some of the design approaches of Plan 9 are visible in Go
+
+
+# Go features, syntax & similar stuff
+
+* Intro to Go
+
+* Features of Go
+
+- Simple syntax
+- Strong, static typing
+- Compiles down to native code
+- Garbage collected
+- Featured toolchain, producing static binaries
+- Batteries included (HTTP, networking, crypto, database, JSON, templates, images)
+- Out of the box cross-compilation
+- Stable API promise
+- License: BSD
+
+: Usual license of 3rd party libraries - BSD(2/3 clause), MIT, Apache 2.0
+
+# basic syntax
+
+* Syntax
+
+- Familiar constructs
+
+   if, for, switch/case, break, continue, return, goto, ++, +=
+
+- New constructs
+
+   range, defer, func, select, go, <-, ->, switch x.(type)
+
+- Familiar types
+
+   int{8,16,32,64}, uint{8,16,32,64}, float{32,64}
+   int (int32 or int64), uint (uint32 or uint64), struct, T, *T
+
+- New types
+
+   string, byte, rune, uintptr, slice, map, interface, chan
+
+* Syntax (2)
+
+.image img/where-while-where-do.jpg
+
+* Syntax (2)
+
+`do/while` expressed as `for` loops.
+
+`while(1)`
+
+  for {
+  	// loop forever
+  }
+
+`while(condition)`
+
+  flag := false
+  for !flag {
+  	if flag {
+    	flag = false
+  	}
+  }
+
+
+
+* Syntax - examples, struct
+
+.play gopath/src/code/struct/struct.go /START OMIT/,/END OMIT/
+
+: Structs can be embedded in other structs
+: Can hide and show stuct fields
+
+
+* Syntax - map, slice
+
+- `map`
+
+  // map[string]int  - map of strings to ints
+  f := map[string]int{
+  	"foo": 1,
+  	"bar": 2,
+  }
+  fmt.Println(f["foo"], foo["bar"])  // 1 2
+
+- `slice`
+
+  b := make([]int, 0, 10)  // slice of 0 elements, 10 preallocated
+  z := make([]int, 10)     // slice of 10 elements
+  f := []int{1,2,3,4}
+  fmt.Println(f[0], foo[2], foo[2:])  // 1 3 {3 4}
+
+* Syntax - interfaces
+
+.play gopath/src/code/fooer/fooer.go /START OMIT/,/END OMIT/
+
+: Interface implementations are implicit, that is the one who implements Fooer does not explicity mark that it does so
+: There's no `implements`, `extends` or similar
+
+* Syntax - sample C code
+
+.code gopath/src/code/c-example/c-example.c
+
+* Syntax - equivalent Go code
+
+.play gopath/src/code/c-example/c-example.go
+
+: direct access to go compiler parser and AST allowed many tools to appear
+
+##### Syntax end
+
+
+
+### Starting with real projects
+
+* Go for embedded
+
+* Example projects
+
+[[https://mender.io][mender.io]]
+
+Mender is an open source tool for updating your embedded devices safely and
+reliably.
+
+[[https://snapcraft.io][snapd]]
+
+Snaps are containerised software packages that are simple to create and install.
+They auto-update and are safe to run. And because they bundle their
+dependencies, they work on all major Linux systems without modification. Snaps
+are available for any Linux OS running snapd, the service that runs and manage
+snaps.
+
+* Basics (1)
+
+Go enforces specific project structure, roots at `GOPATH`
+
+  GOPATH=/home/user/gocode
+
+  /home/user/gocode/
+      src/
+          foo/
+              bar/               (go code in package bar)
+                  x.go
+              quux/              (go code in package main)
+                  y.go           (produces binary named quux)
+      bin/
+          quux                   (<- go install .. puts binaries here)
+          linux_arm/             (<- go install .. when cross compiled)
+              quux
+      pkg/
+          linux_amd64/
+              foo/
+                  bar.a          (installed package object)
+
+Each package `main` produces a binary
+
+* Basics - pure Go code (2)
+
+Basic settings:
+
+- GOARCH: `386`, `amd64`, `arm`, `arm64`, `ppc64[le]`, `mips64[le]`, `mips[le]`
+- GOOS: `linux`, `windows`, `plan9`, `solaris`, `freebsd`, `openbsd`, `dragonfly`
+- not all choices possible
+
+Per architecture tuning:
+
+- GO386: `387`, `sse2`
+- GOARM: `5` (ARMv5, soft-float), `6` (default, ARMv6, VFPv1), `7` (ARMv7, VFPv3)
+
+* Basics - pure Go code (3)
+
+Building:
+
+  $ GOARCH=arm GOARM=7 GOOS=linux \
+     go build -v -x
+   ...
+   <edited>/go/pkg/tool/linux_amd64/compile -o $WORK/runtime/internal/sys.a \
+     -trimpath $WORK -goversion go1.9.2 -p runtime/internal/sys -std -+ -complete \
+     -buildid 72a8e34c91ba0091bd6eb4788d7d48c545c64a90 \
+     -D _<edited>/go/src/runtime/internal/sys -I $WORK -pack ./arch.go ./arch_arm.go \
+     ./intrinsics.go ./stubs.go ./sys.go ./zgoarch_arm.go ./zgoos_linux.go ./zversion.go
+   ...
+
+Useful switches:
+
+- `-x` show executed commands
+- `-v` verbose
+- `-o <path>` output path
+
+: unlike in GNU programs, command line switches are in form -<name> (single -)
+
+* Basics - pure Go code (4)
+
+Tool `compile` (other tools: `link`, `asm`)
+
+  <edited>/go/pkg/tool/linux_amd64/compile ...`
+
+Build ID support
+
+  -buildid 72a8e34c91ba0091bd6eb4788d7d48c545c64a90 \
+
+Selective compilation
+
+  ... ./arch.go ./arch_arm.go \
+  ./intrinsics.go ./stubs.go ./sys.go \
+  ./zgoarch_arm.go ./zgoos_linux.go ./zversion.go
+
+
+* Selective compilation (1)
+
+Target (GOARCH), OS (GOOS) specific files are picked up automatically:
+
+  *_GOOS             zgoos_linux.go os_linux.go
+  *_GOARCH           softfloat_arm.go
+  *_GOOS_GOARCH      signal_linux_arm.go os_linux_arm.go
+
+Or via build tags:
+
+  // +build linux,386 darwin,!cgo
+  // +build linux darwin
+  // +build 386
+
+
+: build linux,386 darwin,!cgo -> (linux & 386) || (darwin & !cgo)
+
+* Selective compilation (2)
+
+.code gopath/src/code/sysnum/sysnum_64.go
+
+* Selective compilation (3)
+
+go build -t withtestkeys
+
+.code gopath/src/code/withtestkeys/testkeys.go
+
+* Assembly - syscall/asm_linux_amd64.s
+
+  TEXT    ·Syscall(SB),NOSPLIT,$0-56
+          CALL    runtime·entersyscall(SB)
+          MOVQ    a1+8(FP), DI
+          MOVQ    a2+16(FP), SI
+          MOVQ    a3+24(FP), DX
+          MOVQ    $0, R10
+          MOVQ    $0, R8
+          MOVQ    $0, R9
+          MOVQ    trap+0(FP), AX  // syscall entry
+          SYSCALL
+          CMPQ    AX, $0xfffffffffffff001
+          JLS     ok
+          MOVQ    $-1, r1+32(FP)
+          MOVQ    $0, r2+40(FP)
+          NEGQ    AX
+          MOVQ    AX, err+48(FP)
+          CALL    runtime·exitsyscall(SB)
+          RET
+  ok:
+          MOVQ    AX, r1+32(FP)
+          MOVQ    DX, r2+40(FP)
+          MOVQ    $0, err+48(FP)
+          CALL    runtime·exitsyscall(SB)
+          RET
+
+* C + Go = Cgo
+
+
+* Cgo & integrating with C (1)
+
+Cgo enables the creation of Go packages that call C code - [[https://golang.org/cmd/cgo/][cmd/cgo]]
+
+- Cgo automatically enabled by default when building for the same GOOS & GOARCH
+
+- setting GOOS or GOARCH different than hosts's *disables* CGO
+
+- example: [[https://github.com/bboozzoo/viadown][viadown]]
+
+  $ go build github.com/bboozzoo/viadown
+  $ ldd viadown
+        linux-vdso.so.1 (0x00007fff529ba000)
+        libpthread.so.0 => /usr/lib/libpthread.so.0 (0x00007f482d5da000)
+        libc.so.6 => /usr/lib/libc.so.6 (0x00007f482d222000)
+        /lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f482d7f8000)
+  $ CGO_ENABLED=0 go build github.com/bboozzoo/viadown
+  $ ldd viadown
+        not a dynamic executable
+
+: we have a dependency on libc and on a particular loader
+
+Use cases:
+- building for a container with different libc, eg. Alpine using `musl`
+
+: disabling CGO has some implications, eg. libc integration is disabled
+: no more getpwent() - non-cgo code will parse /etc/passwd
+: no more libc's resolver (NSS)
+
+* Integrating with C (2)
+
+.code gopath/src/code/cgo/foo.c
+
+.play gopath/src/code/cgo/main.go
+
+* Integrating with C (3)
+
+  $ go build -x -v code/cgo
+  ...
+  CGO_LDFLAGS="-g" "-O2" /home/maciek/code/go/go/pkg/tool/linux_amd64/cgo
+      -objdir $WORK/code/cgo/_obj/ -importpath code/cgo --
+      -I $WORK/code/cgo/_obj/ -g -O2 -Wall -Wextra -Wno-unused
+      -I/home/maciek/code/talks/cehug-lodz/go-for-embedded/gopath/src/code/cgo main.go
+  gcc -I . -fPIC -m64 -pthread -fmessage-length=0 -fdebug-prefix-map=$WORK=/tmp/go-build
+      -gno-record-gcc-switches -I $WORK/code/cgo/_obj/ -g -O2 -Wall -Wextra -Wno-unused
+      -I/home/maciek/code/talks/cehug-lodz/go-for-embedded/gopath/src/code/cgo
+      -o $WORK/code/cgo/_obj/foo.o -c foo.c
+  /home/maciek/code/go/go/pkg/tool/linux_amd64/link -o $WORK/code/cgo/_obj/exe/a.out
+      -L $WORK -extld=gcc -buildmode=exe -buildid=3477b3f117e0c8476113f77294063c7f4a796b19
+      $WORK/code/cgo.a
+  ...
+  $ ldd ./cgo
+        linux-vdso.so.1 (0x00007ffd1b941000)
+        libpthread.so.0 => /usr/lib/libpthread.so.0 (0x00007f8595583000)
+        libc.so.6 => /usr/lib/libc.so.6 (0x00007f85951cb000)
+        /lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f85957a1000)
+
+
+Well, that's not really a static executable.
+
+* Integrating with C (4)
+
+  $ go build -x -v -ldflags '-extldflags "-static"' code/cgo
+  ...
+  /home/maciek/code/go/go/pkg/tool/linux_amd64/link -o $WORK/code/cgo/_obj/exe/a.out
+      -L $WORK -extld=gcc -buildmode=exe -buildid=3477b3f117e0c8476113f77294063c7f4a796b19
+      -extldflags -static $WORK/code/cgo.a
+  ...
+  $ ldd ./cgo
+        not a dynamic executable
+
+* Integrating with C (5) - cross compilation
+
+Go tools respect CC, CXX
+
+  $ CGO_ENABLED=1 CC=arm-linux-gnueabihf-gcc \
+    GOARCH=arm GOARM=7 \
+    go build -x -v -o cgo -ldflags '-extldflags "-static"' code/cgo
+  $ ldd ./cgo
+        not a dynamic executable
+  $ file cgo
+  cgo: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked,
+       for GNU/Linux 2.6.16, BuildID[sha1]=8330c33cc2d9602a6e2243b96375f9ce998717ac,
+       with debug_info, not stripped
+
+*DEMO* C.H.I.P.
+
+* Integrating with C (6)
+
+`github.com/snapcore/snapd/cmd/snap-seccomp/main.go`
+
+  //#cgo CFLAGS: -D_FILE_OFFSET_BITS=64
+  //#cgo pkg-config: --static --cflags libseccomp
+  //#cgo LDFLAGS: -Wl,-Bstatic -lseccomp -Wl,-Bdynamic
+  //
+  //#include <asm/ioctls.h>
+  //#include <ctype.h>
+  //#include <errno.h>
+  //#include <linux/can.h>
+  //#include <linux/netlink.h>
+  //#include <sched.h>
+
+* The Rest
+
+* Toolchain
+
+- compile, link, asm
+- built-in race detector
+- built-in test tool (both testing & benchmarking)
+
+
+* Tools
+
+Go ships with a bunch of useful tools:
+
+- cover - analyze coverage reports
+- gofmt - unified code formatting tool & simple refactoring
+- gorename - complex refactoring
+- eg - example based refactoring
+- guru - source code inspection
+
+
+* Testing (1)
+
+.code gopath/src/code/test-example/foo.go
+
+.code gopath/src/code/test-example/foo_test.go
+
+* Testing (2)
+
+Simple test with race detector
+
+  $ go test -race
+  PASS
+  ok      code/test-example       0.001s
+
+
+Coverage
+
+  $ go test -coverprofile coverage.out
+  PASS
+  coverage: 100.0% of statements
+  ok      code/test-example       0.001s
+
+
+Coverage analysis
+
+  $ go tool cover -func=coverage.out
+  code/test-example/foo.go:5:     Foo             100.0%
+  total:                          (statements)    100.0%
+
+* Testing (3) - benchmarking
+
+.code gopath/src/code/test-example/foo_bench_test.go
+
+  $ go test  -bench .
+  goos: linux
+  goarch: amd64
+  pkg: code/test-example
+  BenchmarkFoo-4          2000000000               1.61 ns/op
+  PASS
+  ok      code/test-example       3.384s
+
+
+* The Bad
+
+* Large binary size (1)
+
+.play gopath/src/code/small-print/print.go
+
+1.8MB (go build)
+
+.play gopath/src/code/smaller-print/print.go
+
+1MB (go build)
+700KB (go build -ldflags '-s')
+270KB (go build -ldflags '-s' && upx)
+
+* Large binary size (2)
+
+Snapd
+
+  $ ls -sh1 bin
+  total 49M
+   14M snap
+  7,8M snapctl
+   17M snapd
+  4,3M snap-exec
+  2,7M snap-seccomp
+  3,8M snap-update-ns
+
+Docker
+
+  $ ls -sh1 $(pacman -Ql docker | awk '/(bin|lib)\/docker/ { print $2 }')
+   25M /usr/bin/docker
+   15M /usr/bin/docker-containerd
+   14M /usr/bin/docker-containerd-ctr
+  3,6M /usr/bin/docker-containerd-shim
+   50M /usr/bin/dockerd
+  656K /usr/bin/docker-init
+  3,1M /usr/bin/docker-proxy
+   11M /usr/bin/docker-runc
+
+
+* No Generics, templates, metaprogramming
+
+Repeat this often
+
+  func FindString(list []string, str string) bool {
+  	for _, k := range list {
+  		if k == str {
+  			return true
+  		}
+  	}
+  	return false
+  }
+
+  func FindInt(list []int, str int) bool {
+  	for _, k := range list {
+  		if k == str {
+  			return true
+  		}
+  	}
+  	return false
+  }
+
+* Stable API promise (1)
+
+How is this bad?
+
+[[https://github.com/golang/go/issues/22739][golang#22739]] os/user: fix signedness of UIDs before stringifying
+
+.image img/os-user-fix-signedness.png
+
+[[https://github.com/golang/go/issues/22924][golang#22924]] syscall: on linux 386 doesn't support syscalls that don't fail
+
+.image img/syscall-on-linux-386.png
+
+: Go authors keep to the promise, the API is frozen, even if parts of it are known to be broken, they will remain so.
+
+* Stable API promise (2)
+
+Add user:
+
+  sudo useradd --uid "$(( 0xfffffffe ))" --shell /bin/sh hightest
+
+Go:
+
+  func main() {
+  	r0, _, e := syscall.RawSyscall(syscall.SYS_GETUID32, 0, 0, 0)
+  	fmt.Println(uint32(r0), "/", e)
+  }
+
+man geteuid32(2):
+
+  ERRORS
+         These functions are always successful.
+
+Go piece returns:
+
+  4294967295 / no such file or directory
+
+* Stable API promise (2) contd.
+
+.image img/meme-best-of-c-and-python.png
+
+* Stable API promise (3) - 386 syscall
+
+  #define INVOKE_SYSCALL	INT	$0x80
+  TEXT	·Syscall(SB),NOSPLIT,$0-28
+  	CALL	runtime·entersyscall(SB)
+  	MOVL	trap+0(FP), AX	// syscall entry
+  	MOVL	a1+4(FP), BX
+  	MOVL	a2+8(FP), CX
+  	MOVL	a3+12(FP), DX
+  	MOVL	$0, SI
+  	MOVL	$0,  DI
+  	INVOKE_SYSCALL
+  	CMPL	AX, $0xfffff001   // -4095
+  	JLS	ok
+  	MOVL	$-1, r1+16(FP)
+  	MOVL	$0, r2+20(FP)
+  	NEGL	AX
+  	MOVL	AX, err+24(FP)
+  	CALL	runtime·exitsyscall(SB)
+  	RET
+  ok:
+  	MOVL	AX, r1+16(FP)
+  	MOVL	DX, r2+20(FP)
+  	MOVL	$0, err+24(FP)
+  	CALL	runtime·exitsyscall(SB)
+  	RET
+
+* Stable API promise (4)
+
+Fixes may land in [[https://godoc.org/golang.org/x/sys/unix][golang.org/x/sys/unix]]
+
+External packages may or may not be covered by stable API promise
+
+Packages may indicate if they have a fixed api: [[https://godoc.org/gopkg.in/check.v1][gopkg.in/check.v1]]
+
+* Dependency management (1)
+
+- None
+
+- Dependencies are vendored under `vendor/` in your project
+
+- Long time problem in Go - [[https://blog.gopheracademy.com/advent-2016/saga-go-dependency-management/][The Saga of Go Dependency Management]]
+
+- go get is the primary tool for _installing_ packages in `$GOPATH`
+
+  go get -u github.com/golang/dep/cmd/dep
+
+- Multiple solutions: govendor, glide, godep, glock, gvt
+
+- [[https://github.com/golang/dep][github.com/golang/dep]] is an emerging solution, yet still incomplete
+
+* Dependency management (2)
+
+
+  GOPATH=/home/user/gocode
+
+  /home/user/gocode/
+     src/
+        github.com/
+           bboozzoo/
+              foo/
+                 x.go    (go code in package github.com/bboozzoo/foo)
+                 vendor/ (vendored dependencies)
+                    golang.org/x/sys/unix/
+                    github.com/sirupsen/logrus/
+                    github.com/BurntSushi/toml/
+
+
+* Fast release cycle
+
+Relaseses:
+
+- 1.9 - Aug 24 2017 (Ubuntu Xenial(backports), Debian Sid/Testing)
+- 1.8 - Feb 16 2017 (Ubuntu Zesty, Debian Stretch)
+- 1.7 - Aug 16 2016 (Ubuntu Zesty, Debian Jessie(backports))
+- 1.6 - Feb 17 2016 (Ubuntu Trusty-Zesty, Debian Jessie (backports))
+- 1.5 - Aug 19 2015
+- 1.4 - Dec 11 2014 (Ubuntu Trusty)
+
+: when wiring a cross distro package you need to be compatible with older releases
