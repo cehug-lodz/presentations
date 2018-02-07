@@ -1,6 +1,9 @@
 # presentations
 
 ## Sezon 2017/2018
+* 2018-01-31 [Tomasz Marciniak: Proces startu platformy na postawie implementacji UEFI na procesory ARM](./2018-01-31/UefiBeagle.pdf)
+* 2018-01-14 [Marek Gawryszewski: Poznaj STM32: małe mikrokontrolery o wielkich możliwościach]()
+* ----------
 * 2017-12-13 [Maciej Borzęcki: Go in embedded](./2017-12-13/README.md)
 * 2017-11-29 [Dominik Adamski: LLVM - discover secrets of the dragon](./2017-11-29/llvm_presentation.pdf)
 * 2017-11-08 [Adam Podogrocki: Zephyr RTOS for IoT](./2017-11-08/Zephyr_RTOS.pdf)
