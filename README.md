@@ -1,6 +1,10 @@
 # presentations
 
+## Sezon 2018/2019
+* 2019-01-16 [Michał Kowalczyk: CppCon 2018: trip report](./2019-01-16/)
+
 ## Sezon 2017/2018
+* 2018-03-21 [Michał Kowalczyk: Getting started with Google Test - an introduction to test automation](./2018-03-21/)
 * 2018-02-21 [Dominik Adamski: Parallel Computing](./2018-02-21/ParallelComputing.pdf)
 * 2018-01-31 [Tomasz Marciniak: Proces startu platformy na postawie implementacji UEFI na procesory ARM](./2018-01-31/UefiBeagle.pdf)
 * 2018-01-14 [Marek Gawryszewski: Poznaj STM32: małe mikrokontrolery o wielkich możliwościach]()
