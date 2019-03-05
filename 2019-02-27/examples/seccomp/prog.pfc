@@ -1,0 +1,17 @@
+#
+# pseudo filter code start
+#
+# filter for arch x86_64 (3221225534)
+if ($arch == 3221225534)
+  # filter for syscall "read" (0) [priority: 65533]
+  if ($syscall == 0)
+    if ($a0.hi32 == 0)
+      if ($a0.lo32 == 3)
+        action ERRNO(1);
+  # default action
+  action ALLOW;
+# invalid architecture action
+action KILL;
+#
+# pseudo filter code end
+#
