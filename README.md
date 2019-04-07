@@ -1,5 +1,8 @@
 # presentations
 
+## Sezon 2018/2019
+* 2019-03-13 [Dawid Pilarski: Nowoczesna obsługa błędów](./2019-03-13/error_handling.pdf)
+
 ## Sezon 2017/2018
 * 2018-02-21 [Dominik Adamski: Parallel Computing](./2018-02-21/ParallelComputing.pdf)
 * 2018-01-31 [Tomasz Marciniak: Proces startu platformy na postawie implementacji UEFI na procesory ARM](./2018-01-31/UefiBeagle.pdf)
