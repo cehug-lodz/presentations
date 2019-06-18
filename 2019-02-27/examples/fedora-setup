@@ -1,0 +1,10 @@
+#!/bin/sh
+
+sudo dnf install \
+     perf \
+     systemtap-devel systemtap-sdt-devel \
+     bpftool \
+     libsoup-devel \
+     libseccomp-devel \
+     golang \
+     bcc
