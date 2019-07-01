@@ -1,6 +1,7 @@
 # presentations
 
 ## Sezon 2018/2019
+* 2019-06-26 [Marek Gawryszewski: ROS, czyli o robotach słów kilka](./2019-06-26/ROS_o_robotach_slow_kilka.pdf)
 * 2019-06-05 [Dawid Pilarski: Migracja z C++11 do C++14](./2019-06-05/Cpp14_migration.pdf)
 * 2019-05-09 [Konrad Zapałowicz: "Rust vs reszta świata"]()
 * 2019-04-10 [Michał Gałka: KernelCI - CI/CD dla jądra Linux]()
