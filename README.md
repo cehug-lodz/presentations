@@ -1,5 +1,8 @@
 # presentations
 
+## Sezon 2019/2020
+* 2019-11-13 [Dominik Adamski: When -O3 is not enough](./2019-11-13/When_O3_is_not_enough.pdf)
+
 ## Sezon 2018/2019
 * 2019-06-26 [Marek Gawryszewski: ROS, czyli o robotach słów kilka](./2019-06-26/ROS_o_robotach_slow_kilka.pdf)
 * 2019-06-05 [Dawid Pilarski: Migracja z C++11 do C++14](./2019-06-05/Cpp14_migration.pdf)
