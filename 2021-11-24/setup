@@ -1,0 +1,15 @@
+snap install mir-kiosk
+snap install wpe-webkit-mir-kiosk
+snap set wpe-webkit-mir-kiosk url=https://www.wunderground.com/weather/pl/lodz
+
+qemu-system-x86_64 -enable-kvm -snapshot -m 2048 \
+                   -device virtio-vga-gl \
+                   -device virtio-net-pci,netdev=mynet0 \
+                   -netdev user,id=mynet0,hostfwd=tcp:127.0.0.1:59467-:22 \
+                   -serial telnet:127.0.0.1:59468,server,nowait \
+                   -monitor telnet:127.0.0.1:59469,server,nowait \
+                   -display gtk,gl=on \
+                   -object rng-random,filename=/dev/urandom,id=rng0 -device virtio-rng-pci,rng=rng0 \
+                   -drive file=image-home/pc.img,if=virtio,index=0 \
+                   -smp 4 \
+                   -bios /usr/share/ovmf/x64/OVMF_CODE.fd

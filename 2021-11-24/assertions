@@ -1,0 +1,34 @@
+$ snap info graphics-debug-tools-bboozzoo                                                 
+name:      graphics-debug-tools-bboozzoo
+summary:   collection of utilities for debugging graphics/compute issues
+publisher: Maciek Borzecki
+store-url: https://snapcraft.io/graphics-debug-tools-bboozzoo
+contact:   https://github.com/bboozzoo/graphics-debug-tools-snap
+license:   GPL-2.0+ OR MIT OR Other Open Source
+...
+snap-id: YcngvJw4tWJLG9sYThpH1cTGrlzbdig5
+$ snap known --remote snap-declaration series=16 snap-id=YcngvJw4tWJLG9sYThpH1cTGrlzbdig5          
+type: snap-declaration
+authority-id: canonical
+snap-id: YcngvJw4tWJLG9sYThpH1cTGrlzbdig5
+publisher-id: FpA2tgNE8bUrUKSOhE6SOpsMdlcEJkDL
+snap-name: graphics-debug-tools-bboozzoo
+timestamp: 2018-03-19T10:21:35.417857Z
+sign-key-sha3-384: BWDEoaqyr25nF5SNCvEv2v7QnM9QsfCc0PBMYD_i2NGSQ32EF2d4D0hqUel3m8ul
+
+AcLBUgQAAQoABgUCWq+PLwAAuFsQAFCtk5X8xJ/RKfOTrB/mza5JeB49ckR1zL8azj6TJeLJLept
+KBtiH9Mc7lXBAXy3pdiQD2GH1EO48eeCdpmbGZut6roLxa7J2+UxK6e/pP5uspXa6x/0Lb4LDfFE
+...
+$ snap known  --remote account account-id=FpA2tgNE8bUrUKSOhE6SOpsMdlcEJkDL      
+type: account
+authority-id: canonical
+account-id: FpA2tgNE8bUrUKSOhE6SOpsMdlcEJkDL
+display-name: Maciek Borzecki
+timestamp: 2017-10-26T07:41:29.654058Z
+username: maciek-borzecki
+validation: unproven
+sign-key-sha3-384: BWDEoaqyr25nF5SNCvEv2v7QnM9QsfCc0PBMYD_i2NGSQ32EF2d4D0hqUel3m8ul
+
+AcLBUgQAAQoABgUCWfGRqQAAQDkQAJdgtSnVvCA4wqLdhVDYwPmezvJHFKXkma1pe3AP0+B+modM
+483i8kxRZDc6a7Au0mr0ud1/VZMe3SyG33QNVCu3K6orJDEiw/LBcbdUJkpV59eQP99ihStE+OvC
+...
