@@ -1,0 +1,48 @@
+type: model
+authority-id: FpA2tgNE8bUrUKSOhE6SOpsMdlcEJkDL
+series: 16
+brand-id: FpA2tgNE8bUrUKSOhE6SOpsMdlcEJkDL
+model: cehug-demox-model
+architecture: amd64
+base: core20
+grade: dangerous
+serial-authority:
+  - generic
+snaps:
+  -
+    default-channel: 20/stable
+    id: UqFziVZDHLSyO3TqSWgNBoAdHbLI4dAH
+    name: cehug-pc
+    type: gadget
+  -
+    default-channel: 20/stable
+    id: pYVQrBcKmBa0mZ4CCN7ExT6jH8rY1hza
+    name: pc-kernel
+    type: kernel
+  -
+    default-channel: latest/stable
+    id: DLqre5XGLbDqg9jPtiAhRRjDuPVa5X1q
+    name: core20
+    type: base
+  -
+    default-channel: latest/stable
+    name: mir-kiosk
+  -
+    default-channel: latest/stable
+    name: mesa-core20
+  -
+    default-channel: latest/stable
+    name: wpe-webkit-mir-kiosk
+timestamp: 2021-06-01T12:18:12+00:00
+sign-key-sha3-384: u2EnPKDpHm8Or1VWwjs3duNosoBpFS4Da-c6vRQHPKwdllDOlQ02_JFGrxZDe03C
+
+AcLBcwQAAQoAHRYhBKg05U8V+aOkBzV5W4jJZcdh7V/PBQJhnn1kAAoJEIjJZcdh7V/PU04P/iTC
+fALb1dYe0i36bhDnu99IRjQXb2ACGpOqnOJxU2/kdoDzhDRGoL7VIxqtB5794xGRk562w29QI960
+AIRUGw06loj3CJ+CMkcH4S6b2ItIt5Ut/5DCqb7EQzrqWj6TtBWhouyCwBYxxB4Nvbr1TQNPZ4Kx
+ou492lBvk5dbfvpymKISIyb/OFLubypVZO7vC6TAgg0Vi0AHf1cQt+0Ee37/hJcb/mqW0LdotYnC
+lf4mzR9gphe7b7qsoFzaRaB75jxQj80frDfEMRHtS8ne2OO1wqGDAvrNR2QOgfoSljDol0sU9HqI
+SJmkXW1G969BchdoXTWqvU+g0Eg+ip1xKCA2NhdkqnBrNUlXyptSYOeFGEvknCOVMEyAL9708WYH
+kLoc7Sm4EQJt8IfGxPxlZIf7wzGL4J06Xvzge52ez3MAdhRSJ0KdHVHEi6WbIxCuQ4s2Ymu3owzz
+X9FaQoP3BlZ6829EZcAYBP9omRUoGkk2iUXqYl52DcgaYJwYmZmAnOITzFfuUrSPv/C9RMT1dBU9
+U8ma5iHXSM8QKk+MK8MvNZzLGpbyX1rnpnk487VwbNAhXLkpjd81pcyMxfSTg9vkLurDEeCVQIqn
+r9AT5OjskxGV6t/nis+ntZpMvxl5EHcD/Hu3M4iht9alnXJ2nseqN3/QywSe0BBmdUmJ6Ury

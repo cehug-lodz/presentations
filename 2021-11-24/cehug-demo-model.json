@@ -1,0 +1,44 @@
+{
+    "type": "model",
+    "authority-id": "FpA2tgNE8bUrUKSOhE6SOpsMdlcEJkDL",
+    "series": "16",
+    "brand-id": "FpA2tgNE8bUrUKSOhE6SOpsMdlcEJkDL",
+    "model": "cehug-demox-model",
+    "architecture": "amd64",
+    "timestamp": "2021-06-01T12:18:12+00:00",
+    "grade": "dangerous",
+    "base": "core20",
+    "serial-authority": ["generic"],
+    "snaps": [
+        {
+            "default-channel": "20/stable",
+            "id": "UqFziVZDHLSyO3TqSWgNBoAdHbLI4dAH",
+            "name": "cehug-pc",
+            "type": "gadget"
+        },
+        {
+            "default-channel": "20/stable",
+            "id": "pYVQrBcKmBa0mZ4CCN7ExT6jH8rY1hza",
+            "name": "pc-kernel",
+            "type": "kernel"
+        },
+        {
+            "default-channel": "latest/stable",
+            "id": "DLqre5XGLbDqg9jPtiAhRRjDuPVa5X1q",
+            "name": "core20",
+            "type": "base"
+        },
+        {
+            "default-channel": "latest/stable",
+            "name": "mir-kiosk"
+        },
+        {
+            "default-channel": "latest/stable",
+            "name": "mesa-core20"
+        },
+        {
+            "default-channel": "latest/stable",
+            "name": "wpe-webkit-mir-kiosk"
+        }
+    ]
+}
