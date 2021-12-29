@@ -1,6 +1,14 @@
 # presentations
 
+## Sezon 2021/2022
+
+* 2021-11-24 [Maciek Borzecki: Ubuntu Core 101](./2021-11-24/Ubuntu%20Core%20101.pdf)
+* 2021-10-06 [Wojciech Madejski: AUTOSAR: long story short]()
+
 ## Sezon 2019/2020
+
+* 2020-03-04 [Konrad Zapałowicz: Napisz funkcję swap - rozmowa rekrutacyjna z c++]()
+* 2020-02-05 [Dawid Pilarski: C++: Objects their lifetime and pointers]()
 * 2019-11-13 [Dominik Adamski: When -O3 is not enough](./2019-11-13/When_O3_is_not_enough.pdf)
 
 ## Sezon 2018/2019
@@ -11,7 +19,7 @@
 * 2019-03-27 [Mateusz Pusz: C++11 was only the beginning]()
 * 2019-03-13 [Dawid Pilarski: Nowoczesna obsługa błędów](./2019-03-13/error_handling.pdf)
 * 2019-02-27 [Maciek Borzęcki: Profilowanie w Linuxie z eBPF]()
-* 2019-01-16 [Michał Kowalczyk: CppCon 2018: trip report](./2019-01-16/)
+* 2019-01-16 [Michał Kowalczyk: CppCon 2018: trip report](./2019-01-16/CppConReport.pdf)
 
 ## Sezon 2017/2018
 * 2018-03-21 [Michał Kowalczyk: Getting started with Google Test - an introduction to test automation](./2018-03-21/)
