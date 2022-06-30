@@ -1,6 +1,7 @@
 # presentations
 
 ## Sezon 2021/2022
+* 2022-06-08 [Rafal Warzycha: Will LoRa and Helium change IoT?](./2022-06-29/will-lora-and-helium-change-iot.pdf)
 * 2022-06-08 [Artur Twardowski: Synteza dźwięku](./2022-06-08/CEHUG_synteza.pdf)
 * 2022-04-27 [Marek Gawryszewski: Chmura? A komu to potrzebne?](./2022-04-27/CEHUG_Chmura_a_komu_to_potrzebne.pdf)
 * 2022-01-19 [Konrad Zapałowicz: Kopiowanie z C++ do Rust]()
