@@ -1,5 +1,8 @@
 # presentations
 
+## Sezon 2022/2023
+* 2022-11-16 [Maciej Wołosewicz: TDD w Embedded C](./2022-11-16/tdd-embedded-c.pdf)
+
 ## Sezon 2021/2022
 * 2022-06-08 [Rafal Warzycha: Will LoRa and Helium change IoT?](./2022-06-29/will-lora-and-helium-change-iot.pdf)
 * 2022-06-08 [Artur Twardowski: Synteza dźwięku](./2022-06-08/CEHUG_synteza.pdf)
