@@ -1,6 +1,7 @@
 # presentations
 
 ## Sezon 2022/2023
+* 2023-06-15 [Jarek Jaryszew: Intro to tinyML](./2023-06-14/Introduction_to_tinyML.pdf)
 * 2022-11-16 [Maciej Wołosewicz: TDD w Embedded C](./2022-11-16/tdd-embedded-c.pdf)
 
 ## Sezon 2021/2022
