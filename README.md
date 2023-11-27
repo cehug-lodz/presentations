@@ -1,6 +1,7 @@
 # presentations
 
 ## Sezon 2023/2024
+* 2023-11-22 [Dawid Królak: hello_blinky.rs - Introduction to Embedded Rust](./2023-11-22/hello_blinky.rs.pdf)
 * 2023-09-13 [Michał Janiszewski: RSA in practice](./2023-09-13/rsa_in_practice_20230913.pdf)
 
 ## Sezon 2022/2023
