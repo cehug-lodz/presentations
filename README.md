@@ -3,6 +3,9 @@
 ## Sezon 2023/2024
 * 2023-11-22 [Dawid Królak: hello_blinky.rs - Introduction to Embedded Rust](./2023-11-22/hello_blinky.rs.pdf)
 * 2023-09-13 [Michał Janiszewski: RSA in practice](./2023-09-13/rsa_in_practice_20230913.pdf)
+* 2024-01-24 [IoT w warsztacie, na przykładzie zamka Hakierspejsie](./2024-01-24/IoT%20w%20warsztacie%2C%20na%20przyk%C5%82adzie%20Hakierspejsu.pdf)
+
+
 
 ## Sezon 2022/2023
 * 2023-06-15 [Jarek Jaryszew: Intro to tinyML](./2023-06-14/Introduction_to_tinyML.pdf)
