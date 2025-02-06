@@ -1,4 +1,6 @@
 # presentations
+## Sezon 2024/2025
+* 2025-01-29 [Dawid Królak: O czym myślą drony? ](./2025-01-29/o-czym-mysla-drony.pdf)
 
 ## Sezon 2023/2024
 * 2023-11-22 [Dawid Królak: hello_blinky.rs - Introduction to Embedded Rust](./2023-11-22/hello_blinky.rs.pdf)
