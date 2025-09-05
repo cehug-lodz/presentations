@@ -1,5 +1,6 @@
 # presentations
 ## Sezon 2024/2025
+* 2025-06-24 [Jarek Jaryszew: Czym właściwie zajmuje się AI Software Engineer? Wprowadzenie do frameworków agentowych, narzędzi LLM i RAG](./2025-06-24/intro2llm-lofi.pdf)
 * 2025-01-29 [Dawid Królak: O czym myślą drony? ](./2025-01-29/o-czym-mysla-drony.pdf)
 
 ## Sezon 2023/2024
