@@ -1,5 +1,6 @@
 # presentations
 ## Sezon 2025/2026
+* 2026-06-10 [Artur Andrzejczak: Twój samochód cię obserwuje: kamery kabinowe od sensora do sterownika V4L2](./2026-06-10/your_car_is_watching_you.pdf)
 * 2026-04-22 [Tobiasz Fic: Kompilator powinien to wyłapać... ale jak?](./2026-04-22/CEHUG_Prezentacja_Kompilatory.pdf)
 * 2026-03-25 [Dawid Królak: Jak przepisać świat na Rust](./2026-03-25/How%20to%20rewrite%20world%20in%20Rust.pdf)
 
