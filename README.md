@@ -1,6 +1,9 @@
 # presentations
-## Sezon 2025/2026
+## Sezon 2026/2027
 * 2026-11-04 [Jarek Jaryszew: LLM w domu, czyli wprowadzenie do lokalnego hostingu modeli](./2026-11-04/llm_at_home.pdf)
+* 2026-10-07 [Artur Twardowski: Kody ANSI i Unicode, czyli prawdziwy potencjał konsoli](./2026-10-07/presentation.pdf)
+
+## Sezon 2025/2026
 * 2026-06-10 [Artur Andrzejczak: Twój samochód cię obserwuje: kamery kabinowe od sensora do sterownika V4L2](./2026-06-10/your_car_is_watching_you.pdf)
 * 2026-05-20 [Marek Gawryszewski: O ważnych decyzjach warto pamiętać: ADRy dla developerów](./2026-05-20/presentation-slides.pdf)
 * 2026-04-22 [Tobiasz Fic: Kompilator powinien to wyłapać... ale jak?](./2026-04-22/CEHUG_Prezentacja_Kompilatory.pdf)
